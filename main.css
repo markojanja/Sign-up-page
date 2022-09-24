@@ -1,8 +1,6 @@
 :root{
     --border-clr:#E5E7EB;
     --btn-clr:#596D48;
-    --error-clr:red;
-    --success-clr:blue;
 }
 @font-face{
     font-family: 'Norse-Bold';
