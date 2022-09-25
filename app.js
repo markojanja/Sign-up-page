@@ -1,25 +1,41 @@
 const passwordField = document.querySelector("#password");
 const confirmPasswordField = document.querySelector("#confirm_password");
 const pwd_message = document.querySelector("#pass_msg");
-let pwdVal;
+let pwdValue;
+
+
+function handlePasswordError(message){
+  pwd_message.textContent = message;
+  pwd_message.style.display = "block";
+  pwd_message.style.color = "red";
+  passwordField.style.border = "1px solid red";
+}
 
 passwordField.addEventListener("input",(e) => {
-    if (e.target.value.length < 8) {
-      pwd_message.style.display = "block";
-      pwd_message.style.color = "red";
-      passwordField.style.border = "1px solid red";
-      pwd_message.textContent = "*password must be 8 characters long";
-    } else {
+    const containsUpperCaseLetters = /(?=.*?[A-Z].*)/
+    const containsDigits = /[(?=.*?[0-9].*/
+    let password = e.target.value
+    if(containsUpperCaseLetters.test(password)===false){
+      handlePasswordError("Must contain at least one capital letter")
+    }
+    else if(!containsDigits.test(password)){
+      handlePasswordError("Must contain at least one digit")
+    }
+    else if (password.length < 8) {
+      handlePasswordError("must be at least 8 characters long")
+    }
+    else {
       pwd_message.style.display = "none";
       passwordField.style.border = "1px solid green";
     }
-    pwdVal = e.target.value;
+    pwdValue = password;
   },
   false
 );
 
 confirmPasswordField.addEventListener("input", (e) => {
-  if (pwdVal === e.target.value) {
+  let confirmPassword = e.target.value
+  if (pwdValue === confirmPassword) {
     pwd_message.style.display = "none";
     passwordField.style.border = "1px solid green";
     confirmPasswordField.style.border = "1px solid green";
@@ -32,5 +48,3 @@ confirmPasswordField.addEventListener("input", (e) => {
   }
 });
 
-//TODO
-//refactor code

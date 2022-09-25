@@ -25,12 +25,12 @@ html, body{
 .mb-25{
     margin-bottom: 25px!important;
 }
-.mb-100{
-    margin-bottom: 100px!important;
+.mt-75{
+    margin-top: 250px!important;
 }
 .main{
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 30% 70%;
 }
@@ -41,7 +41,7 @@ html, body{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 .banner-text{
     position: relative;
@@ -55,6 +55,7 @@ html, body{
 }
 .btn{
     display: inline-block;
+    cursor: pointer;
     border: none;
     outline: none;
     padding: 15px 30px;
@@ -148,4 +149,5 @@ select:-webkit-autofill:focus {
 }
 #pass_msg, #pass_msg_2{
     display: none;
+    padding: 5px 0;
 }
